@@ -10,8 +10,8 @@ export const LinkList = () => {
 
   return (
     <>
-      {data.feed.links.map((link) => (
-        <Link key={link.id} linkData={link} />
+      {data.feed.links.map((link, index) => (
+        <Link key={link.id} linkData={link} index={index} />
       ))}
     </>
   );

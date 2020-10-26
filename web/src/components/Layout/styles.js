@@ -7,3 +7,10 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
+
+export const Wrapper = styled.div`
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;

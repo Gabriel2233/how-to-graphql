@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --main-orange: #ff4500;
     --main-white: #fff;
     --main-gray: #f0f0f5;
+    --secondary-gray: #888;
     --main-text: #222;
     --secondary-text: #333;
   }

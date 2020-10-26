@@ -1,13 +1,10 @@
-import { Header } from "../components/Header";
+import { Routes } from "../routes/Routes";
 import { Layout } from "../components/Layout";
-
-const { LinkList } = require("../components/LinkList");
 
 function App() {
   return (
     <Layout>
-      <Header />
-      <LinkList />
+      <Routes />
     </Layout>
   );
 }
