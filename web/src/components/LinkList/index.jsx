@@ -1,9 +1,13 @@
 import { Link } from "../Link";
 import { useQuery } from "@apollo/client";
-import { LINKS_FEED } from "../../graphql/queries";
+import { useSearch } from '../../contexts/SearchContext'
+import { Divider } from './styles'
 
 export const LinkList = () => {
-  const { data, loading, error } = useQuery(LINKS_FEED);
+
+  const { feedQuery, variable } = useSearch()
+
+  const { data, error, loading } = useQuery(feedQuery, { variables : { filter: variable }})
 
   if (loading) return <h1>Loading Feed...</h1>;
   if (error) return <h1>An unexpected error ocurred.</h1>;
@@ -13,6 +17,8 @@ export const LinkList = () => {
       {data.feed.links.map((link, index) => (
         <Link key={link.id} linkData={link} index={index} />
       ))}
+
+      <Divider />
     </>
   );
 };

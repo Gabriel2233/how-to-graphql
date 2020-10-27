@@ -1,10 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
- @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
-
   :root {
-    --main-orange: #ff4500;
+    --main-orange: #ff6600;
     --main-white: #fff;
     --main-gray: #f0f0f5;
     --secondary-gray: #888;

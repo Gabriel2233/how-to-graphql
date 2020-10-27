@@ -9,7 +9,7 @@ import {
 import logo from "../../assets/y-combinator-.png";
 import { Link, useHistory } from "react-router-dom";
 import { AUTH_TOKEN } from "../../constants";
-import { getStoragedToken } from "../../utils/getToken";
+import { getStoragedToken } from "../../utils/token-utils";
 
 export const Header = () => {
   const history = useHistory();

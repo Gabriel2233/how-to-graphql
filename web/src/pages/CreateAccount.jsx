@@ -10,6 +10,7 @@ import { Layout } from "../components/Layout";
 import { AUTH_TOKEN } from "../constants";
 import { useMutation } from "@apollo/client";
 import { SIGNUP_MUTATION } from "../graphql/mutations";
+import { saveToken } from "../utils/token-utils";
 
 const CreateAccount = () => {
   const history = useHistory();
@@ -18,9 +19,6 @@ const CreateAccount = () => {
 
   const [createNewUser, { data }] = useMutation(SIGNUP_MUTATION);
 
-  const saveUserData = (token) => {
-    localStorage.setItem(AUTH_TOKEN, token);
-  };
 
   const createAccount = async (data) => {
     try {
@@ -34,7 +32,7 @@ const CreateAccount = () => {
 
       const newUserObject = await response.data;
 
-      saveUserData(newUserObject.signup.token);
+      saveToken(newUserObject.signup.token);
 
       history.push("/");
     } catch (err) {

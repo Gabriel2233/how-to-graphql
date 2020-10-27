@@ -8,6 +8,7 @@ export const LINKS_FEED = gql`
         id
         description
         url
+        createdAt
         postedBy {
           id
           name
@@ -22,3 +23,26 @@ export const LINKS_FEED = gql`
     }
   }
 `;
+
+export const SEARCH_LINKS_FEED = gql`
+  query FeedSearchQuery($filter: String!) {
+    feed(filter: $filter) {
+      links {
+        id
+        url
+        description
+        createdAt
+        postedBy {
+          id
+          name
+        }
+        votes {
+          id
+          user {
+            id
+          }
+        }
+      }
+    }
+  }
+`

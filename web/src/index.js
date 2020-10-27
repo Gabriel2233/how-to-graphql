@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./pages/App";
 
+import { SearchContextProvider } from './contexts/SearchContext'
+
 import {
   ApolloProvider,
   InMemoryCache,
@@ -33,9 +35,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
+    <SearchContextProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
+    </SearchContextProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

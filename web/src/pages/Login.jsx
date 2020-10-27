@@ -12,6 +12,7 @@ import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { AUTH_TOKEN } from "../constants";
+import { saveToken } from "../utils/token-utils";
 
 const Login = () => {
   const history = useHistory();
@@ -19,10 +20,6 @@ const Login = () => {
   const { register, errors, handleSubmit } = useForm();
 
   const [logUserIn, { data }] = useMutation(LOGIN_MUTATION);
-
-  const saveUserData = (token) => {
-    localStorage.setItem(AUTH_TOKEN, token);
-  };
 
   const login = async (data) => {
     try {
@@ -32,7 +29,7 @@ const Login = () => {
 
       const loginObject = await response.data;
 
-      saveUserData(loginObject.login.token);
+      saveToken(loginObject.login.token);
 
       history.push("/");
     } catch (err) {

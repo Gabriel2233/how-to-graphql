@@ -7,11 +7,18 @@ async function feed(parent, args, context, info) {
     ]
   } : {}
 
-  const links = await context.prisma.link.findMany({
+  const data = await context.prisma.link.findMany({
     where,
     skip: args.skip,
     take: args.take,
     orderBy: args.orderBy
+  })
+
+  const links = data.map(link => { 
+    return {
+      ...link,
+      createdAt: link.createdAt.toISOString() 
+    }
   })
 
   const count = await context.prisma.link.count({ where })
